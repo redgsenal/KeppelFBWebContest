@@ -1,6 +1,7 @@
 package com.keppelcontest.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -9,28 +10,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.keppelcontest.data.UserCommentsDAO;
 import com.keppelcontest.model.UserComments;
+import com.keppelcontest.utils.Utils;
 
 /**
- * Servlet implementation class InsertUserComments
+ * Servlet implementation class CheckUserComments
+ * Get user comments made.  This should contain only 1 comment per facebook user
  */
-@WebServlet("/InsertUserComments")
-public class InsertUserComments extends HttpServlet {
+@WebServlet("/FBUserComments")
+public class FBUserComments extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertUserComments() {
+    public FBUserComments() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -38,19 +40,18 @@ public class InsertUserComments extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String fn = request.getParameter("fullname");
-		String uc = request.getParameter("usercomments");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
 		String id = request.getParameter("userfbappid");
-		//Utils.log(fn);
-		//Utils.log(uc);		
+		UserCommentsDAO d = new UserCommentsDAO(id, "", "");
 		try {
 			UserComments comments = new UserComments();
-			comments.insert(id, fn, uc);
-			response.sendRedirect("formcomplete.jsp");
+			d = comments.find(id);
+			//response.sendRedirect("formcomplete.jsp");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
+		out.print(d.toString());
 	}
 }

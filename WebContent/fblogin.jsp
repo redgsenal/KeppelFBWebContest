@@ -16,5 +16,5 @@
 		</div>
 	</div>
 <%@include file="includes/scripts.jsp"%>
-<script src="js/fblogin.js"></script>
+<%@include file="includes/fbscripts.jsp"%>
 <%@include file="includes/footer.jsp"%>

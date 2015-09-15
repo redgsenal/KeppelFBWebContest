@@ -2,8 +2,6 @@
 var fblogin = false;
 var applogin = false;
 function statusChangeCallback(response) {
-	console.log('statusChangeCallback');
-	console.log(response);
 	// The response object is returned with a status field that lets the
 	// app know the current login status of the person.
 	// Full docs on the response object can be found in the documentation
@@ -35,15 +33,12 @@ function checkLoginState() {
 	});
 }
 
-function testAPI() {
-	console.log('Welcome!  Fetching your information.... ');
+/*function testAPI() {
 	FB.api('/me', function(response) {
-		console.log(response);
-		console.log('Successful login for: ' + response.name);
 		document.getElementById('status').innerHTML = 'Thanks for logging in, '
 				+ response.name + '!';
 	});
-}
+}*/
 
 // app secret: 609147de07e02bec9e874fb2578d6101;
 window.fbAsyncInit = function() {
