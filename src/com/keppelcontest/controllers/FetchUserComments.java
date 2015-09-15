@@ -18,14 +18,14 @@ import com.keppelcontest.utils.Utils;
  * Servlet implementation class CheckUserComments
  * Get user comments made.  This should contain only 1 comment per facebook user
  */
-@WebServlet("/FBUserComments")
-public class FBUserComments extends HttpServlet {
+@WebServlet("/FetchUserComments")
+public class FetchUserComments extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FBUserComments() {
+    public FetchUserComments() {
         super();
     }
 
@@ -45,12 +45,16 @@ public class FBUserComments extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String id = request.getParameter("userfbappid");
 		UserCommentsDAO d = new UserCommentsDAO(id, "", "");
+		UserComments comments = null;
 		try {
-			UserComments comments = new UserComments();
+			comments = new UserComments();
 			d = comments.find(id);
 			//response.sendRedirect("formcomplete.jsp");
 		} catch (SQLException e) {
+			if (comments != null)
+				comments.close();
 			e.printStackTrace();
+			
 		}
 		out.print(d.toString());
 	}

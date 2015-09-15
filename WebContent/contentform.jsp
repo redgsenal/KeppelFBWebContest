@@ -10,7 +10,7 @@
 				<button class="button login btnjoinlogin">Please join to our Facebook page app here.</button>
 			</div>
 			<div class="defaulthidden fbapplogin">								
-				<img class="fbprofileimg" id="fbprofile" src="img/silhouette.png" />
+				<img class="fbprofileimg" id="fbprofile" />
 				<p class="greeting">Hello</p>
 				<p>Please fill-in the following to send your feedback.</p>
 				<form id="commentform" action="InsertUserComments" method="post">
@@ -20,6 +20,9 @@
 					<textarea cols="40" rows="10" name="usercomments" form="commentform">Enter text here...</textarea><br/>
 					<input type="submit"/>
 				</form>
+			</div>
+			<div class="defaulthidden contestcontent">
+				<h4 class="welcomemsg">Welcome back</h4>
 			</div>
 			<div id="status"></div>
 		</div>

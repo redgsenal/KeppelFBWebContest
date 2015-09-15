@@ -23,14 +23,12 @@ public class InsertUserComments extends HttpServlet {
      */
     public InsertUserComments() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -38,18 +36,17 @@ public class InsertUserComments extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String fn = request.getParameter("fullname");
 		String uc = request.getParameter("usercomments");
 		String id = request.getParameter("userfbappid");
-		//Utils.log(fn);
-		//Utils.log(uc);		
+		UserComments comments = null;
 		try {
-			UserComments comments = new UserComments();
+			comments = new UserComments();
 			comments.insert(id, fn, uc);
 			response.sendRedirect("formcomplete.jsp");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			if (comments != null)
+				comments.close();
 			e.printStackTrace();
 		}		
 	}

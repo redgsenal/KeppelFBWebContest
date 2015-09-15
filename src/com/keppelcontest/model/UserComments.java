@@ -53,4 +53,8 @@ public class UserComments implements CommentImpl {
 		}
 		return d;
 	}
+	public void close(){
+		if (conn != null)
+			db.close(conn);
+	}
 }
