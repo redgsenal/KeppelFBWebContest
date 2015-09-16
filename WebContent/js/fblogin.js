@@ -58,8 +58,11 @@ function setContentForm() {
 					fbapplogin.show();
 				}
 			},
-			function(){			
-				console.log('option2');
+			function(reply){
+				// user has a comment record already with this userfbappid
+				console.log(reply);
+				$('.welcomemsg').text("Hello " + reply.fullname);
+				$('.contestcontent').show();
 			}
 		);
 	}
@@ -75,13 +78,16 @@ function checkUserComments(cbOptionSendComment, cbOptionWelcome) {
 			}
 		}).done(function(reply) {
 			console.log('reply, ', reply);
-			if (reply && reply.fullname)
-				cbOptionWelcome();
-			else
+			if (reply && reply.fullname){
+				// user has a comment record already with this userfbappid
+				cbOptionWelcome(reply);
+			} else{
 				cbOptionSendComment();
+			}
 		});
 	} else {
-		cbOptionSendComment();
+		// should go to the index page
+		document.location = "index.jsp";
 	}
 }
 

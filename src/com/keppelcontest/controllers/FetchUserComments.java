@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.keppelcontest.data.UserCommentsDAO;
 import com.keppelcontest.model.UserComments;
-import com.keppelcontest.utils.Utils;
 
 /**
  * Servlet implementation class CheckUserComments
