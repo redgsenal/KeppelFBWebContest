@@ -1,5 +1,4 @@
-<project name="com.keppellandsg.website" default="package.build"
-	basedir=".">
+<project name="keppelfbwebcontest" default="war" basedir=".">
 	<description>
 		Keppel Facebook Contest
 	</description>
@@ -14,6 +13,12 @@
 	<tstamp>
 		<format property="BUILD_DATE" pattern="yyyy-MM-dd'T'HH:mm:ss" locale="en,UK" />
 	</tstamp>
+	
+	<property name="build-directory" value="build" />
+	<property name="war-file-name" value="${project-name}.war" />
+	<property name="web-xml-file" value="web/WEB-INF/web.xml" />
+	<property name="web-directory" value="web" />
+	<property name="classes-directory" value="bin" />
 
 	<macrodef name="maven">
 		<attribute name="dir" default="." />
@@ -83,5 +88,17 @@
 		<!-- Delete the ${build} and ${dist} directory trees -->
 		<delete dir="${build}" />
 		<delete dir="${dist}" />
+	</target>
+	
+	<target name="war" depends="">
+		<mkdir dir="${build-directory}" />
+		<delete file="${build-directory}/${war-file-name}" />
+		<war warfile="${build-directory}/${war-file-name}" webxml="${web-xml-file}">
+			<classes dir="${classes-directory}" />
+			<fileset dir="${web-directory}">
+				<!-- Need to exclude it since webxml is an attribute of the war tag above -->
+				<exclude name="WEB-INF/web.xml" />
+			</fileset>			
+		</war>
 	</target>
 </project>
