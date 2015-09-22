@@ -42,6 +42,26 @@ a {
   color: springgreen;
 }
 
+/* line 22, ../../../sass/en/_defaults.scss */
+.left {
+  left: 0;
+}
+
+/* line 25, ../../../sass/en/_defaults.scss */
+.right {
+  right: 0;
+}
+
+/* line 28, ../../../sass/en/_defaults.scss */
+.white-text {
+  color: white;
+}
+
+/* line 31, ../../../sass/en/_defaults.scss */
+.center-text {
+  text-align: center;
+}
+
 /* line 1, ../../../sass/en/_contents.scss */
 .joincontest {
   width: 250px;
@@ -60,4 +80,30 @@ a {
 .fbprofileimg {
   width: 200px;
   height: 200px;
+}
+
+/* line 15, ../../../sass/en/_contents.scss */
+.topmenu {
+  height: 70px;
+  background-color: red;
+  width: 100%;
+}
+
+/* line 20, ../../../sass/en/_contents.scss */
+.logo {
+  height: 100%;
+  width: 120px;
+  background-color: green;
+}
+/* line 24, ../../../sass/en/_contents.scss */
+.logo a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 23px 0;
+}
+/* line 30, ../../../sass/en/_contents.scss */
+.logo a :hover {
+  color: white;
+  text-decoration: none;
 }
