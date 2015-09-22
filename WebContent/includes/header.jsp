@@ -12,6 +12,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="basecss/normalize.css">
+        <link rel="stylesheet" href="basecss/bootstrap.min.css">
         <link rel="stylesheet" href="basecss/main.css">
         <link rel="stylesheet" href="css/en/styles.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
